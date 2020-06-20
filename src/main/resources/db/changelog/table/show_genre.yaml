@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - logicalFilePath: db/changelog/table/show_genre.yaml
+  - changeSet:
+      id: 1563877765929-1
+      author: test
+      changes:
+        - createTable:
+            tableName: show_genre
+            columns:
+              - column:
+                  name: id
+                  type: BIGSERIAL
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: id_genre
+                  type: BIGSERIAL
+              - column:
+                  name: id_show
+                  type: BIGSERIAL

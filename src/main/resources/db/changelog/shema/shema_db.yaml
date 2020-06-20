@@ -1,0 +1,62 @@
+databaseChangeLog:
+  - logicalFilePath: db/changelog/shema/shema_db.yaml
+  - changeSet:
+      id: 1563877765929-6
+      author: test
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: id_genre
+            baseTableName: show_genre
+            constraintName: FK2o0j9dfflemvvcfdo17cbqvdxaa
+            deferrable: false
+            initiallyDeferred: false
+            referencedColumnNames: id
+            referencedTableName: genre
+  - changeSet:
+      id: 1563877765929-7
+      author: test
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: id_user
+            baseTableName: watching
+            constraintName: FK2o0j9dfflemvvcfdsbvo17cbqvdxaa
+            deferrable: false
+            initiallyDeferred: false
+            referencedColumnNames: id
+            referencedTableName: t_user
+  - changeSet:
+      id: 1563877765929-8
+      author: test
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: id_show
+            baseTableName: watching
+            constraintName: FK2o0jvgh89emvvo1sxdv7cbqvdxaa
+            deferrable: false
+            initiallyDeferred: false
+            referencedColumnNames: id
+            referencedTableName: show
+  - changeSet:
+      id: 1563877765929-9
+      author: test
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: id_user
+            baseTableName: watching_episode_user
+            constraintName: FK2o0jvgh89emfdfdsxvxdv7cbqvdxaa
+            deferrable: false
+            initiallyDeferred: false
+            referencedColumnNames: id
+            referencedTableName: t_user
+  - changeSet:
+      id: 1563877765929-10
+      author: test
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: id_episode
+            baseTableName: watching_episode_user
+            constraintName: FK2o0jvgh89embqvdxaa
+            deferrable: false
+            initiallyDeferred: false
+            referencedColumnNames: id
+            referencedTableName: episode

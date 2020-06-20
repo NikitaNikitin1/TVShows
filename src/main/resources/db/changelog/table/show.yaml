@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - logicalFilePath: db/changelog/table/show.yaml
+  - changeSet:
+      id: 1563877765929-1
+      author: test
+      changes:
+        - createTable:
+            tableName: show
+            columns:
+              - column:
+                  name: id
+                  type: BIGSERIAL
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(200)
+              - column:
+                  name: prod_date
+                  type: DATE
+              - column:
+                  name: country
+                  type: varchar(100)
+              - column:
+                  name: tv_channel
+                  type: varchar(500)
+              - column:
+                  name: rating_kinopoisk
+                  type: float8
