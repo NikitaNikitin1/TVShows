@@ -7,16 +7,16 @@ databaseChangeLog:
   - include:
       file: db/changelog/table/show.yaml
   - include:
-      file: db/changelog/table/show_genre.yaml
-  - include:
       file: db/changelog/table/t_user.yaml
   - include:
       file: db/changelog/table/watching.yaml
   - include:
       file: db/changelog/table/watching_episode_user.yaml
   - include:
-      file: db/changelog/shema/shema_db.yaml
-  - include:
       file: db/changelog/table/role.yaml
   - include:
       file: db/changelog/table/t_user_roles.yaml
+  - include:
+      file: db/changelog/table/sugh.yaml
+  - include:
+      file: db/changelog/test_data/test_data.yaml

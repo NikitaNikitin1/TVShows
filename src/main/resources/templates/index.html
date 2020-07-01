@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
 	<meta charset="utf-8">
 	<title>Shows</title>
@@ -23,7 +23,7 @@
 	<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 		<ul class="navbar-nav col-xl-4">
 			<li class="nav-item active">
-				<a class="nav-link" >Сериалы<span class="sr-only">(current)</span></a>
+				<a class="nav-link">Сериалы<span class="sr-only">(current)</span></a>
 			</li>
 			<li class="nav-item ">
 				<a class="nav-link" href="#">Рейтинги</a>
@@ -58,7 +58,7 @@
 				<div id="" class="row bg-light">
 					<div class="col-12 text-center border">
 						<img alt="#" th:src="@{/img/tv.png}" class="rounded mx-auto d-block img-menu">
-						<a th:href="@{myShows}"><p class="text-menu">Мои сериалы</p></a>
+						<a th:href="@{/myShows}"><p class="text-menu">Мои сериалы</p></a>
 					</div>
 				</div>
 				<div class="row bg-light">
@@ -105,41 +105,24 @@
 				<div class="col-2 items">Сезонов</div>
 				<div class="col-1 ">Год</div>
 			</div>
-			<div class="row content_shows">
-				<div class="col-3 items"><a href="">Шерлок</a></div>
-				<div class="col-2 items">5</div>
-				<div class="col-2 items">344 453</div>
+
+
+			<div th:each="show : ${shows}" class="row content_shows">
+				<div class="col-3 items"><a th:href="'/show/'+ ${show.getId()}" th:text="${show.getName()}">Шерлок</a></div>
+				<div class="col-2 items" th:text="${show.getRatingKinopoisk()}">5</div>
+				<div class="col-2 items" th:text="${show.getUsers().size()}">344 453</div>
 				<div class="col-2 items">52.85%</div>
 				<div class="col-2 items">4</div>
-				<div class="col-1 ">2010</div>
-			</div>
-			<div class="row content_shows">
-				<div class="col-3 items"><a href="">Шерлок</a></div>
-				<div class="col-2 items">5</div>
-				<div class="col-2 items">344 453</div>
-				<div class="col-2 items">52.85%</div>
-				<div class="col-2 items">4</div>
-				<div class="col-1 ">2010</div>
-			</div>
-			<div class="row content_shows">
-				<div class="col-3 items"><a href="">Шерлок</a></div>
-				<div class="col-2 items">5</div>
-				<div class="col-2 items">344 453</div>
-				<div class="col-2 items">52.85%</div>
-				<div class="col-2 items">4</div>
-				<div class="col-1 ">2010</div>
+				<div class="col-1 " th:text="${show.getProdDate()}">2010</div>
 			</div>
 		</div>
 
 		<div class="border-left col-xl-2 scroll bg-light">
 			<p> </p>
-			<div class="row right-menu border-bottom">
-				<h5 class="col-12">Категории</h5>
-				<span class="col-12">Боевик</span>
-				<span class="col-12">Драмма</span>
-				<span class="col-12">Криминал</span>
+			<div  class="row right-menu border-bottom">
+				<h5 class="col-12">Жанры</h5>
+				<a href="/" th:each="genre : ${genres}" class="col-12" th:text="${genre.getName()}">Боевик</a>
 			</div>
-
 			<div class="row right-menu border-bottom">
 				<h5 class="col-12">Статус</h5>
 				<span class="col-12">Завершен</span>
@@ -164,21 +147,21 @@
 
 
 <!-- The Modal -->
-<div id="id01" class="modal container-fluid">
+<div id="id01" th:style="${passwordError} or ${usernameError} ? 'display:block' : 'display:none'" class="modal container-fluid">
           <span onclick="document.getElementById('id01').style.display='none'"
 				class="close" title="Close Modal">&times;</span>
 	<div class="col-3 offset-md-4 modal-contente animate">
 		<div class="row login_reg ">
-			<div id="key_log" class="col-6 key" onclick="login()" >
+			<div id="key_log" class="col-6 key" onclick="login()" th:style="${passwordError} or ${usernameError} ? 'background-color: #7f7f7fb7' : 'background-color: #66666f'">
 				<h5 class="text-left">Вход на сайт</h5>
 			</div>
-			<div id="key_reg" class="col-6 key" onclick="reg()" style="background-color: #7f7f7fb7">
-				<h5 class="text-right">Зарегистрироваться</h5>
+			<div id="key_reg" class="col-6 key" onclick="reg()" style="background-color: #7f7f7fb7" th:style="${passwordError} or ${usernameError} ? 'background-color: #66666f' : 'background-color: #7f7f7fb7'">
+				<h5 class="text-right">Регистрация</h5>
 			</div>
 		</div>
 
 
-		<div id="f1" class="row">
+		<div id="f1"  th:style="${passwordError} or ${usernameError} ? 'display:none' : 'display:block'" class="row">
 			<form  class="col-12" method="post" action="#" th:action="@{/login}" th:object="${userForm}">
 				<div class="form-group">
 					<label>Логин</label>
@@ -191,7 +174,7 @@
 				<button type="submit" class="btn text-left btn-primary">Войти</button>
 			</form>
 		</div>
-		<div id="f2" class="form2">
+		<div id="f2" class="form2" th:style="${passwordError} or ${usernameError} ? 'display:block' : 'display:none'">
 			<div class="row">
 				<form  class="col-12" method="post" action="#" th:action="@{/registration}" th:object="${userForm}">
 					<div class="form-group">
@@ -208,6 +191,8 @@
 						<input type="password" class="form-control" th:field="*{passwordConfirm}" placeholder="Password confirm">
 					</div>
 					<button type="submit" class="btn text-left btn-primary">Зарегистрироваться</button>
+					<div th:text="${passwordError}"></div>
+					<div th:text="${usernameError}"></div>
 				</form>
 			</div>
 		</div>

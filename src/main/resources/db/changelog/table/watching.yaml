@@ -8,17 +8,10 @@ databaseChangeLog:
             tableName: watching
             columns:
               - column:
-                  name: id
-                  type: BIGSERIAL
-                  autoIncrement: true
-                  constraints:
-                    primaryKey: true
-                    nullable: false
-              - column:
-                  name: id_user
+                  name: user_id
                   type: bigserial
               - column:
-                  name: id_show
+                  name: show_id
                   type: bigserial
               - column:
                   name: user_rating

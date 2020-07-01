@@ -4,6 +4,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -18,4 +22,7 @@ public class Genre {
 
     @Column
     private String name;
+
+    @ManyToMany(mappedBy = "genres")
+    private List<Show> shows;
 }

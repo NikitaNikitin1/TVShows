@@ -10,16 +10,22 @@ import java.util.List;
 
 @Service
 @NoArgsConstructor
-public class ShowsService {
+public class ShowService {
 
     private ShowRepo showsRepo;
 
     @Autowired
-    ShowsService(ShowRepo showsRepo){
+    ShowService(ShowRepo showsRepo){
         this.showsRepo = showsRepo;
     }
 
-    private List<Show> findAll(){
+    public List<Show> findAll(){
         return showsRepo.findAll();
+
     }
+
+    public Show getById(Long id){
+        return showsRepo.findById(id).orElse(new Show());
+    }
+
 }

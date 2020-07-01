@@ -8,17 +8,10 @@ databaseChangeLog:
             tableName: watching_episode_user
             columns:
               - column:
-                  name: id
-                  type: BIGSERIAL
-                  autoIncrement: true
-                  constraints:
-                    primaryKey: true
-                    nullable: false
-              - column:
-                  name: id_user
+                  name: user_id
                   type: BIGSERIAL
               - column:
-                  name: id_episode
+                  name: episode_id
                   type: BIGSERIAL
               - column:
                   name: rating_user

@@ -25,11 +25,11 @@ public class UserService implements UserDetailsService {
     @PersistenceContext
     private EntityManager em;
 
-    UserRepo userRepo;
+    private UserRepo userRepo;
 
-    RoleRepo roleRepo;
+    private RoleRepo roleRepo;
 
-    BCryptPasswordEncoder bCryptPasswordEncoder;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     public UserService(UserRepo usersRepo, RoleRepo roleRepo, BCryptPasswordEncoder bCryptPasswordEncoder) {
@@ -51,6 +51,8 @@ public class UserService implements UserDetailsService {
         Optional<User> userFromDb = userRepo.findById(userId);
         return userFromDb.orElse(new User());
     }
+
+
 
     public List<User> allUsers() {
         return userRepo.findAll();

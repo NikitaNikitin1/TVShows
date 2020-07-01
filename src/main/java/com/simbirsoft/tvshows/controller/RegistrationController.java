@@ -27,15 +27,15 @@ public class RegistrationController {
     @PostMapping
     public String addUser(@ModelAttribute("userForm")@Valid User userForm, BindingResult bindingResult, Model model){
         if (bindingResult.hasErrors()){
-            return "redirect:/";
+            return "index";
         }
         if (!userForm.getPassword().equals(userForm.getPasswordConfirm())){
             model.addAttribute("passwordError", "Пароли не совпадают");
-            return "redirect:/";
+            return "index";
         }
         if (!userService.saveUser(userForm)){
             model.addAttribute("usernameError", "Пользователь с таким именем уже существует");
-            return "redirect:/";
+            return "index";
         }
 
         return "redirect:/";

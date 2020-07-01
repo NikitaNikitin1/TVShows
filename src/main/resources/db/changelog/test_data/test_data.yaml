@@ -1,0 +1,46 @@
+databaseChangeLog:
+  - logicalFilePath: db/changelog/test_data/test_data.yaml
+  - changeSet:
+      id: 2
+      author: test
+      comment: "append game"
+      changes:
+        - insert:
+            tableName: show
+            columns:
+              - column:
+                  name: name
+                  value: "sherlok"
+              - column:
+                  name: prod_date
+                  value: "2000-01-01"
+              - column:
+                  name: country
+                  value: "british"
+              - column:
+                  name: tv_channel
+                  value: "sine"
+              - column:
+                  name: rating_kinopoisk
+                  value: 55
+        - insert:
+            tableName: genre
+            columns:
+              - column:
+                  name: name
+                  value: "боевик"
+        - insert:
+            tableName: genre
+            columns:
+              - column:
+                  name: name
+                  value: "триллер"
+        - insert:
+            tableName: shows_genres
+            columns:
+              - column:
+                  name: show_id
+                  value: 1
+              - column:
+                  name: genre_id
+                  value: 1

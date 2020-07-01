@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -36,4 +38,7 @@ public class Episode {
     @Column
     private Integer runTime;
 
+    @Transient
+    @ManyToMany(mappedBy = "episodes")
+    private List<User> users = new ArrayList<>();
 }

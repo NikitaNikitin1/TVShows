@@ -29,3 +29,6 @@ databaseChangeLog:
               - column:
                   name: rating_kinopoisk
                   type: float8
+              - column:
+                  name: description
+                  type: varchar(250)

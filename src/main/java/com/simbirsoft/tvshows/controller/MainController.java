@@ -1,6 +1,9 @@
 package com.simbirsoft.tvshows.controller;
 
 import com.simbirsoft.tvshows.model.User;
+import com.simbirsoft.tvshows.service.GenreService;
+import com.simbirsoft.tvshows.service.ShowService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -12,19 +15,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class MainController {
 
+    @Autowired
+    private ShowService showsService;
+
+    @Autowired
+    private GenreService genreService;
+
     @GetMapping
     public String mainPage(Model model){
-
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user = new User();
-        user.setUsername(auth.getName());
         model.addAttribute("userForm",new User());
+        model.addAttribute("shows",showsService.findAll());
+        model.addAttribute("genres",genreService.findAll());
         return "index";
     }
 
-    @GetMapping("/myShows")
-    public String my(Model model){
-        model.addAttribute("userForm",new User());
-        return "myShows";
-    }
 }
