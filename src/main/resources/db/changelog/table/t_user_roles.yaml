@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - logicalFilePath: db/changelog/table/t_user_roles.yaml
+  - changeSet:
+      id: 1563877765929-1
+      author: test
+      changes:
+        - createTable:
+            tableName: t_user_roles
+            columns:
+              - column:
+                  name: user_id
+                  type: BIGSERIAL
+              - column:
+                  name: roles_id
+                  type: BIGSERIAL

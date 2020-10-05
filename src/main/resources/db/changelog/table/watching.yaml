@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - logicalFilePath: db/changelog/table/watching.yaml
+  - changeSet:
+      id: 1563877765929-1
+      author: test
+      changes:
+        - createTable:
+            tableName: watching
+            columns:
+              - column:
+                  name: user_id
+                  type: bigserial
+              - column:
+                  name: show_id
+                  type: bigserial
+              - column:
+                  name: user_rating
+                  type: int
+              - column:
+                  name: watching_status
+                  type: int

@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - logicalFilePath: db/changelog/table/watching_episode_user.yaml
+  - changeSet:
+      id: 1563877765929-1
+      author: test
+      changes:
+        - createTable:
+            tableName: watching_episode_user
+            columns:
+              - column:
+                  name: user_id
+                  type: BIGSERIAL
+              - column:
+                  name: episode_id
+                  type: BIGSERIAL
+              - column:
+                  name: rating_user
+                  type: int
+
